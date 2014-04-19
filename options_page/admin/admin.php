@@ -17,11 +17,17 @@
 
 								<table class="form-table">
 									<tr valign="top">
-										<td scope="row"><label for="tablecell">E-mail para recebimento de notificações: </label></td>
-										<td><input class="regular-text" name="email" value="<?php echo esc_attr( $options['email'] ); ?>" type="text"></td>
+										<td scope="row">
+											<label for="tablecell">E-mail para recebimento de notificações: </label>
+										</td>
+										<td>
+											<input class="regular-text" name="email" value="<?php echo esc_attr( $options['email'] ); ?>" type="text">
+										</td>
 									</tr>
 									<tr valign="top" class="alternate">
-										<td scope="row"><label for="tablecell">Qtd de Produtos a ser exibido por padrão</label></td>
+										<td scope="row">
+											<label for="tablecell">Qtd de Produtos a ser exibido por padrão</label>
+										</td>
 										<td>
 											<input name="qtd" id="" type="text" value="<?php echo esc_attr( $options['qtd'] ); ?>" class="small-text code" />
 											<span class="description">O Padrão é 10 produtos</span>
@@ -58,6 +64,7 @@
 								<p>Clique no botão para salvar</p>
 								
 								<?php wp_nonce_field('options_page_nonce', 'options_page_nonce_field'); ?>
+
 								<input class="button-primary" type="submit" name="options_page_submit" value="Salvar" /> 
 							</div> <!-- .inside -->
 							
@@ -66,7 +73,7 @@
 					</div> <!-- .meta-box-sortables -->
 					
 				</div> <!-- #postbox-container-1 .postbox-container -->
-			</form> <!-- Closing Form -->
+			</form> 
 
 		</div> <!-- #post-body .metabox-holder .columns-2 -->
 		

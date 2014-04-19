@@ -57,10 +57,14 @@ function stw_create_dashboard_widget() {
 add_action('widgets_init', 'stw_register_widgets');
 
 function stw_register_widgets() {
+	/*
+		Recebe como parâmetro o nome da classe criada.
+	*/
 	register_widget('STW_Bio_Widget');
 }
 
 class STW_Bio_Widget extends WP_Widget {
+
 	function __construct() {
 		$widgets_ops = array(
 			'classname' => 'stw_widget_class',
@@ -70,13 +74,22 @@ class STW_Bio_Widget extends WP_Widget {
 		parent::__construct( 'stw_bio_widget', 'STW Bio Widget', $widgets_ops );
 	}
 
+	/*
+		$instance contém os dados salvos do Widget
+	*/
 	public function form( $instance ) {
 		$defaults = array(
 			'title' => 'Minha Biografia',
 			'name'  => '',
 			'bio'   => ''
 		);
-		$instance = wp_parse_args( (array) $instance, $defaults );
+
+		/*
+			Combina 2 arrays, onde é dado "prioridade" aos campos do primeiro array.
+			Se $instance = array( 'title' =>  'teste' ) e $defaults = array( 'title' => '', 'qtd' => 10)
+			O array resultante será array( 'title' => 'teste', 'qtd' => 10);
+		*/
+		$instance = wp_parse_args( $instance, $defaults );
 
 		$title    = $instance['title'];
 		$name     = $instance['name'];
@@ -97,6 +110,9 @@ class STW_Bio_Widget extends WP_Widget {
 		<?php
 	}
 
+	/*
+		$new_instance são os dados que o usuário acabou de inserir, $old_instance são os dados antigos
+	*/
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field($new_instance['title']);
@@ -106,6 +122,9 @@ class STW_Bio_Widget extends WP_Widget {
 		return $instance;
 	}
 
+	/*
+		$args são os parâmetros passados no register_sidebar. $instance são os dados salvos do Widget
+	*/
 	public function widget( $args, $instance ) {
 		extract( $args );
 

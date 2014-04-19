@@ -10,10 +10,12 @@ Author URI: http://nicholasandre.com.br
 add_action('admin_menu', 'options_add_menu');
 
 /*
-add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+add_menu_page( $page_title, $menu_title, $capability, 
+$menu_slug, $function, $icon_url, $position );
 */
 function options_add_menu() {
-	add_menu_page( 'Página de Opções', 'Opções do Plugin', 'manage_options', 'options_page', 'options_page_layout');
+	add_menu_page( 'Página de Opções', 'Opções do Plugin', 
+		'manage_options', 'options_page', 'options_page_layout');
 }
 
 function options_page_layout() {
@@ -31,7 +33,7 @@ function options_page_layout() {
 		}
 
 		if ( isset( $_POST['gateway']) ) {
-			$options['gateway'] = esc_attr( $_POST['gateway'] );
+			$options['gateway'] = sanitize_text_field( $_POST['gateway'] );
 		}
 
 		update_option('plugin_options_settings', $options);

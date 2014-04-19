@@ -43,7 +43,7 @@ function my_custom_post_product() {
 		'has_archive'   => true,
 	);
 	/*
-		Lembre-se de após registrar um post_type, certifica que as regras de reescrita da URL (caso ativas) sejam
+		Lembre-se de após registrar um post_type, certifique-se que as regras de reescrita da URL (caso ativas) sejam
 		reconstruídas após o registro de um novo post_type. Para tanto basta acessar Opções -> Permalinks. Toda vez que 
 		esta página é acessada, o WordPress automaticamente recria as regras de reescrita.
 	*/
@@ -128,7 +128,7 @@ function product_price_box_save( $post_id ) {
 	if ( 'product' != get_post_type() || ! current_user_can( 'edit_post', $post_id ) )
 		return;  
 	
-	$product_price = $_POST['product_price'];
+	$product_price = sanitize_text_field($_POST['product_price']);
 
 	update_post_meta( $post_id, 'product_price', $product_price );
 }
@@ -159,33 +159,4 @@ function my_taxonomies_product() {
 
 add_action( 'init', 'my_taxonomies_product');
 
-// Aula 3.5 - Exibindo custom posts no site
-/*
-<?php
-		$args = array(
-			'post_type' => 'product',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'product_category',
-					'field' => 'slug',
-					'terms' => 'boardgames'
-				)
-			)
-		);
-		$products = new WP_Query( $args );
-		if( $products->have_posts() ) {
-			while( $products->have_posts() ) {
-				$products->the_post();
-				?>
-					<h1><?php the_title() ?></h1>
-					<div class='content'>
-						<?php the_content() ?>
-					</div>
-				<?php
-			}
-		}
-		else {
-			echo 'Nenhum produto!';
-		}
-	?>
-*/
+

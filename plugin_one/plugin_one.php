@@ -16,10 +16,11 @@ Author URI: http://nicholasandre.com.br
 	plugins_url( $relative_path, __FILE__ );
 	ou
 
-	define('PONE_URL', plugins_url(__FILE__) );
+	define('PONE_URL', plugins_url('', __FILE__) );
 
 */
 define('PONE_REQUIRED_VERSION', '3.8'); 
+define('PONE_URL', plugins_url('', __FILE__) );
 define('PONE_DIR', plugin_dir_path( __FILE__ ) );
 
 register_activation_hook( __FILE__, 'pone_activate');

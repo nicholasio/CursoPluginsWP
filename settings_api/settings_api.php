@@ -50,18 +50,15 @@ function stp_initialize_theme_options() {
  * ------------------------------------------------------------------------ */
  
 function stp_general_options_callback() {
-    echo '<p>Está é uma seção.</p>';
-} 
+    echo '<p class="description">Esta é uma seção</p>';
+}
 
-function stp_toggle_header_callback($args) {
-     
-    $html = '<input type="checkbox" id="show_header" name="show_header" value="1" ' . checked(1, get_option('show_header'), false) . '/>';
-     
-    $html .= '<label for="show_header"> '  . $args[0] . '</label>';
-     
-    echo $html;
-     
-} 
+function stp_toggle_header_callback( $args ) {
+    ?>
+    <input type="checkbox" id="show_header" name="show_header" value="1" <?php checked(1, get_option('show_header')); ?> />
+    <label for="show_header"><?php echo $args[0]; ?></label>
+    <?php
+}
   
 // Aula 6.2
 
@@ -71,9 +68,9 @@ function stp_register_menus() {
 	add_theme_page(
         'Opções do tema',            // O Título da página
         'Opções do tema',            // Label do menu
-        'administrator',            // Permissão para visualizar esta página
-        'stp_theme_options',    // Slug - unique ID
-        'stp_theme_display'     // Nome da função para renderizar esta página
+        'administrator',             // Permissão para visualizar esta página
+        'stp_theme_options',         // Slug - unique ID
+        'stp_theme_display'          // Nome da função para renderizar esta página
     );
 }
 
@@ -154,36 +151,27 @@ function stp_general_display_options_callback() {
 	<?php
 }
 
-function stp_header_callback($args) {
- 
+function stp_header_callback( $args ) {
     $options = get_option('stp_theme_display_options');
+    ?>
+    <input type="checkbox" name="stp_theme_display_options[show_header]" value="1" <?php checked(1, $options['show_header']); ?> >
+    <label for="show_header"><?php echo $args[0]; ?></label>
+    <?php
+}
  
-    $html = '<input type="checkbox" id="show_header" name="stp_theme_display_options[show_header]" value="1" ' . checked(1, $options['show_header'], false) . '/>';
-    $html .= '<label for="show_header"> '  . $args[0] . '</label>';
- 
-    echo $html;
- 
-} 
- 
-function stp_content_callback($args) {
- 
+function stp_content_callback( $args ) {
     $options = get_option('stp_theme_display_options');
+    ?>
+    <input type="checkbox" name="stp_theme_display_options[show_content]" value="1" <?php checked(1, $options['show_content']); ?> >
+    <label for="show_header"><?php echo $args[0]; ?></label>
+    <?php
+}
  
-    $html = '<input type="checkbox" id="show_content" name="stp_theme_display_options[show_content]" value="1" ' . checked(1, $options['show_content'], false) . '/>';
-    $html .= '<label for="show_content"> '  . $args[0] . '</label>';
- 
-    echo $html;
- 
-} 
- 
-function stp_footer_callback($args) {
- 
+function stp_footer_callback( $args ) {
     $options = get_option('stp_theme_display_options');
- 
-    $html = '<input type="checkbox" id="show_footer" name="stp_theme_display_options[show_footer]" value="1" ' . checked(1, $options['show_footer'], false) . '/>';
-    $html .= '<label for="show_footer"> '  . $args[0] . '</label>';
- 
-    echo $html;
- 
-} 
+    ?>
+    <input type="checkbox" name="stp_theme_display_options[show_footer]" value="1" <?php checked(1, $options['show_footer']); ?> >
+    <label for="show_header"><?php echo $args[0]; ?></label>
+    <?php
+}
 
