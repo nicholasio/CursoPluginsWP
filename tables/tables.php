@@ -86,7 +86,7 @@ function stw_create_dashboard_widget_wpdb() {
 			'text' => 'Alterando via $wpdb'
 		),
 		array(
-			'id' => 3
+			'id' => 2
 		),
 		array(
 			'%s',
@@ -102,7 +102,7 @@ function stw_create_dashboard_widget_wpdb() {
 	/*$rows_deleted = $wpdb->delete(
 		$table_name,
 		array(
-			'id' => 3
+			'id' => 2
 		),
 		array(
 			'%d'
