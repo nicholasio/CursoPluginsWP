@@ -53,13 +53,15 @@ function stw_create_dashboard_widget_wpdb() {
 	$table_name = $wpdb->prefix . 'test_table';
 
 	/*
-	$wpdb->insert( $table, $data, $format );
-	$wpdb->update( $table, $data, $where, $format = null, $where_format = null );
-	$wpdb->delete( $table, $where, $where_format = null );
-	$wpdb->query('query'); 
-	$wpdb->get_row('query', output_type, row_offset);
-	$wpdb->get_var( 'query', column_offset, row_offset )
-	$wpdb->get_results( 'query', output_type );
+		Um pequeno guia dos métodos visto na aula
+		*****************************************
+		$wpdb->insert( $table, $data, $format );
+		$wpdb->update( $table, $data, $where, $format = null, $where_format = null );
+		$wpdb->delete( $table, $where, $where_format = null );
+		$wpdb->query('query'); 
+		$wpdb->get_row('query', output_type, row_offset);
+		$wpdb->get_var( 'query', column_offset, row_offset )
+		$wpdb->get_results( 'query', output_type );
 	*/
 
 	/*$wpdb->insert( 

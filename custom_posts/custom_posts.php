@@ -108,7 +108,7 @@ function product_price_box() {
 }
 
 function product_price_box_content( $post ) {
-	wp_nonce_field( 'pone_metabox_form_save', 'product_price_box_content_nonce' );
+	wp_nonce_field( 'product_metabox_form_save', 'product_price_box_content_nonce' );
 	$price = get_post_meta( get_the_ID(), 'product_price', true);
 	?>
 	<label for="product_price"></label>
@@ -123,11 +123,12 @@ function product_price_box_save( $post_id ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
 	return;
 	
-	check_admin_referer('pone_metabox_form_save', 'product_price_box_content_nonce');
-
+	
 	if ( 'product' != get_post_type() || ! current_user_can( 'edit_post', $post_id ) )
 		return;  
 	
+	check_admin_referer('product_metabox_form_save', 'product_price_box_content_nonce');
+
 	$product_price = sanitize_text_field($_POST['product_price']);
 
 	update_post_meta( $post_id, 'product_price', $product_price );
