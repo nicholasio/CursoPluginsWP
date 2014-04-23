@@ -17,6 +17,12 @@ register_activation_hook( __FILE__, 'swpe_install');
 
 function swpe_install() {
 
+	global $wp_version;
+
+	if ( version_compare($wp_version, '3.8', '<') ) {
+		wp_die('Este plugin requer no mínimo a versão 3.8 do WordPress');
+	}
+
 	add_option('swpe_plugin_version', SWPE_VERSION);
 
 }

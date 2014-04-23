@@ -1,10 +1,10 @@
 <?php
-add_action( 'init', 'spwpe_initialize_cmb_meta_boxes', 9999 );
+add_action( 'init', 'swpe_initialize_cmb_meta_boxes', 9999 );
 
 /**
  * Carregando classe metabox
  */
-function spwpe_initialize_cmb_meta_boxes() {
+function swpe_initialize_cmb_meta_boxes() {
 
 	if ( ! class_exists( 'cmb_Meta_Box' ) )
 		require_once SWPE_DIR . 'admin/includes/cmb/init.php';
@@ -13,12 +13,7 @@ function spwpe_initialize_cmb_meta_boxes() {
 
 add_filter( 'cmb_meta_boxes', 'swpe_product_meta_box' );
 
-/**
- * Define os metaboxes para o post type produto
- *
- * @param  array $meta_boxes
- * @return array
- */
+
 function swpe_product_meta_box( array $meta_boxes ) {
 
 	
