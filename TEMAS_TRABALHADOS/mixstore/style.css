@@ -1,0 +1,87 @@
+/* Theme Name:   MixStore
+ Theme URI:    http://example.com/twenty-fourteen-child/
+ Description:  Curso Desenvolvendo Plugin Para WordPress
+ Author:       Nícholas André
+ Author URI:   http://www.nicholasandre.com.br
+ Template:     mixfolio
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twenty-fourteen-child
+*/
+
+@import url("../mixfolio/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+.pagination {
+	float:left;
+	clear:left;
+	margin: 30px 0 0 0;
+}
+.pagination ul{
+	overflow: hidden;
+	display: block;
+	font-size: 11px;
+	margin: 0px 0px 0px 0px;
+	padding-bottom: 70px;
+}
+
+.pagination  ul li{
+	display: block;
+	margin-right: 5px;
+	float: left;
+}
+
+.pagination  ul li a, .pagination  ul li span{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	text-decoration: none;
+	width: 20px;
+	border: 1px solid #ccc;
+	line-height: 20px;
+
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.pagination ul li a{ color: #444; }
+
+.pagination ul li:hover a{
+	color: #fff;
+	background: #ccc;
+}
+
+.pagination ul li span{
+	background: #444;
+	color: #fff;
+}
+
+.swpe_pricebox {
+	line-height: 20px;
+	float:left;
+}
+.swpe_price {
+	float:left;
+}
+.swpe_normal_price {
+	font-size: 14px;
+}
+
+.swpe_price_with_discount {
+	font-size: 18px;
+}
+.swpe_divided {
+	font-size: 24px;
+}
+.swpe_buy_button {
+	float:left;
+	margin-left: 40px;
+}
+.swpe_buy_button input[type=image] {
+
+	width: 120px;
+}
