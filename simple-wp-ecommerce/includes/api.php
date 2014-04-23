@@ -1,8 +1,9 @@
 <?php
 
 function swpe_get_products( $args = array() ) {
+	$options = get_option('swpe_general_options');
 	$defaults = array(
-		'posts_per_page' => '-1',
+		'posts_per_page' => (int) $options['qtd_products'],
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -23,20 +24,23 @@ function swpe_show_products( $display_args = array() , $qr_args = array() ) {
 	$products = swpe_get_products( $qr_args );
 
 	$defaults = array(
-		'container'       => 'div',
-		'container_class' => '',
-		'before_item'     => '<div class="swpe_item">',
-		'after_item'      => '</div>',
-		'thumbnail_size'  => 'medium',
-		'more_text'		  => 'Ver Produto',
-		'title'  	  	  => ''
+		'container'       	=> 'div',
+		'container_class' 	=> '',
+		'before_item'     	=> '<div class="swpe_item">',
+		'after_item'      	=> '</div>',
+		'thumbnail_size' 	=> 'medium',
+		'more_text'		  	=> 'Ver Produto',
+		'title'  	  	 	=> '',
+		'before_title'		=> '<h1>',
+		'after_title'		=> '</h1>',
+		'template'			=> SWPE_DIR . 'front/views/product.php'
  	);
 
  	$display_args = wp_parse_args( $display_args, $defaults );
  	extract($display_args);
 
  	if ( ! empty($container) )
- 		echo '<'. $container .' class="' . $container_class . '"">';
+ 		echo '<'. $container .' class="' . $container_class . '">';
 
  	echo $title;
 
@@ -44,7 +48,7 @@ function swpe_show_products( $display_args = array() , $qr_args = array() ) {
 		while( $products->have_posts() ) { 
 			$products->the_post();
 			echo $before_item;
-				include( SWPE_DIR . 'front/views/product.php');
+				include( $template );
 			echo $after_item;
 		}
 	} else {
@@ -53,10 +57,12 @@ function swpe_show_products( $display_args = array() , $qr_args = array() ) {
 		echo $after_item;
 	}
 
-	swpe_base_pagination( $products );
+	
 
 	if ( ! empty($container) )
 		echo '</' . $container . '>';
+
+	swpe_base_pagination( $products );
 }
 
 function swpe_get_description() {
@@ -122,7 +128,9 @@ function swpe_show_single_product( $args ) {
 }
 
 function swpe_get_price() {
-	return get_post_meta(get_the_ID(), '_swpe_product_price', true);
+	$price = get_post_meta(get_the_ID(), '_swpe_product_price', true);
+	$price = str_replace(',', '.', $price);
+	return number_format($price, 2, '.', '');
 }
 
 function swpe_show_price() {
@@ -143,15 +151,16 @@ function swpe_show_discount() {
 		echo swpe_get_discount();
 }
 
-function swpe_get_price_with_discount() {
+function swpe_get_price_with_discount( $sep = ',') {
 	$discount = swpe_get_discount();
 	if ( $discount ) {
 		$discount = $discount/100;
 		$price = str_replace(',','.', swpe_get_price());
-
-		return str_replace('.',',',$price - $price * $discount);
+		$price = $price - $price*$discount;
+		return number_format($price, 2, '.', '');
 	} else {
-		return swpe_get_price();
+		return  swpe_get_price();
+		
 	}
 }
 
@@ -174,6 +183,6 @@ function swpe_show_price_divided() {
 	$price = $price / $p;
 	$price = number_format($price, 2);
 	$price = str_replace('.',',',$price);
-	
+
 	echo $price;
 }

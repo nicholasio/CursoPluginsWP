@@ -53,15 +53,15 @@ function swpe_options_page_settings() {
 
 	add_settings_section(
 		$moip_section,
-		'Escolha qual o gateway de pagamento',
+		'Configurações do PagSeguro',
 		null,
 		$slug_options
 	);
 
 	add_settings_field(
-		'gateway',
-		'Gateway de Pagamento',
-		'swpe_gateway_callback',
+		'email_pagseguro',
+		'E-mail de cadastro no PagSeguro',
+		'swpe_pagseguro_email_callback',
 		$slug_options,
 		$moip_section,
 		array(
@@ -84,13 +84,11 @@ function swpe_qtd_products_callback( $args ) {
 	<?php
 }
 
-function swpe_gateway_callback( $args ) {
+function swpe_pagseguro_email_callback( $args ) {
 	$options = get_option($args[0]);
 	?>
-	<select name="<?php echo $args[0]; ?>[gateway]" id="">
-		<option <?php selected($options['gateway'], 'moip'); ?> value="moip">Moip</option>
-		<option <?php selected($options['gateway'], 'pagseguro'); ?>value="pagseguro">PagSeguro</option>
-	</select>
+		<input type="text" name="<?php echo $args[0]; ?>[email_pagseguro]" id="swpe_email_pagseguro" value="<?php echo esc_attr($options['email_pagseguro']);?>">
+		<label for="swpe_email_pagseguro">Defina a quantidade de produtos a serem exibidos por padrão</label>
 	<?php
 }
 

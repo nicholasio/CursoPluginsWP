@@ -30,10 +30,9 @@ function swpe_register_post_types() {
 
 	add_post_type_support( SWPE_PREFIX . 'product', 'thumbnail' );
 
-	/*
-		Reutilizando a taxonomia padrão de categoria do WordPress para o nosso Post Type
-	*/
-	register_taxonomy_for_object_type( 'category', SWPE_PREFIX . 'product' );
+	$taxonomy = apply_filters('swpe_main_taxonomy', 'category');
+
+	register_taxonomy_for_object_type( $taxonomy, SWPE_PREFIX . 'product' );
 }
 add_filter( 'post_updated_messages', 'swpe_updated_messages' );
 

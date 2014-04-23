@@ -17,16 +17,13 @@ register_activation_hook( __FILE__, 'swpe_install');
 
 function swpe_install() {
 
-	//Criar tabelas
+	add_option('swpe_plugin_version', SWPE_VERSION);
 
 }
 
 register_deactivation_hook( __FILE__, 'swpe_deactivate');
 
-function swpe_deactivate() {
-	
-
-}
+function swpe_deactivate() { /**/ }
 
 
 add_action('after_setup_theme', 'swpe_init_plugin');

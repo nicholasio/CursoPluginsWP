@@ -19,7 +19,8 @@ class swpe_Featured_Product extends WP_Widget {
 	public function form( $instance ) {
 		$defaults = array(
 			'title' => 'Produto em Destaque',
-			'more_text' => 'Ver detalhes'
+			'more_text' => 'Ver detalhes',
+			'product' => -1
 		);
 
 		$instance = wp_parse_args( $instance , $defaults );
