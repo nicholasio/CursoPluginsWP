@@ -10,7 +10,6 @@ function swpe_pre_get_posts( $query ) {
 		$query->set('post_type', array(SWPE_PREFIX . 'product') );
 	}
 
-	return $query;
 }
 
 
