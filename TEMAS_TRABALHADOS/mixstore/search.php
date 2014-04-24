@@ -19,22 +19,24 @@ get_header(); ?>
 
 
 			<?php 
-				swpe_show_products(
-					array(
-						'title'				=> '',
-						'container'			=> 'ul',
-						'container_class'   => 'grid',
-						'before_item' 		=> '<li class="wrap four columns">',
-						'after_item'  		=> '</li>',
-						'thumbnail_size'	=>  '',
-						'more_text'			=>  '',	
-						'template'			=>  get_stylesheet_directory() . '/swpe_product.php'
-					),
-					array(
-						'posts_per_page' => 4,
-						's' => get_query_var('s')
-					)
-				); 
+				if ( function_exists('swpe_show_products') ) {
+					swpe_show_products(
+						array(
+							'title'				=> '',
+							'container'			=> 'ul',
+							'container_class'   => 'grid',
+							'before_item' 		=> '<li class="wrap four columns">',
+							'after_item'  		=> '</li>',
+							'thumbnail_size'	=>  '',
+							'more_text'			=>  '',	
+							'template'			=>  get_stylesheet_directory() . '/swpe_product.php'
+						),
+						array(
+							'posts_per_page' => 4,
+							's' => get_query_var('s')
+						)
+					); 
+				}
 			?>
 
 

@@ -9,13 +9,15 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<?php
-				swpe_show_single_product(
-					array(
-						'container' 		=> 'div',
-						'container_class'   => '',
-						'thumbnail_size'    => ''
-					)
-				);
+				if ( function_exists('swpe_show_single_product') ) {
+					swpe_show_single_product(
+						array(
+							'container' 		=> 'div',
+							'container_class'   => '',
+							'thumbnail_size'    => ''
+						)
+					);	
+				}
 			?>
 
 		</div><!-- #content -->
