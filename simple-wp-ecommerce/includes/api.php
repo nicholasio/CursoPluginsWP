@@ -73,58 +73,8 @@ function swpe_show_description() {
 	echo swpe_get_description();
 }
 
-function swpe_base_pagination( $query ) {
-
-    $big = 999999999; 
-
-
-    $base   = home_url() . '%_%';
-    $format = '?page=%#%';
-    $paged  = max(1, get_query_var('page'));
-    if ( ! is_front_page() ) {
-    	$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
-    	$format = '?paged=%#%';
-    	$paged = max(1, get_query_var('paged') );
-    }
-    	
-
-    $paginate_links = paginate_links( 
-    	array(
-	        'base' => $base,
-	        'format' => $format,
-	        'current' => $paged,
-	        'total' => $query->max_num_pages,
-	        'mid_size' => 5,
-	        'prev_text' => '<<',
-	        'next_text' => '>>',
-	        'type' => 'list'
-    	) 
-    );
-
-    if ( $paginate_links ) {
-        echo '<div class="pagination">';
-        echo $paginate_links;
-        echo '</div><!--// end .pagination -->';
-    }
-}
-
 function swpe_get_gallery_images() {
 	return get_post_meta(get_the_ID(), '_swpe_product_gallery', true);
-}
-
-function swpe_show_single_product( $args ) {
-	global $post;
-	setup_postdata($post);
-	extract($args);
-
-	if ( !empty($container) )
-		echo '<' .  $container . ' class="'. $container_class.'">';
-
-		include(SWPE_DIR . 'front/views/single-product.php');
-
-	if ( !empty($container) )
-		echo '</' . $container . '>';
-	wp_reset_postdata();
 }
 
 function swpe_get_price() {
@@ -186,3 +136,59 @@ function swpe_show_price_divided() {
 
 	echo $price;
 }
+
+
+function swpe_base_pagination( $query ) {
+
+    $big = 999999999; 
+
+
+    $base   = home_url() . '%_%';
+    $format = '?page=%#%';
+    $paged  = max(1, get_query_var('page'));
+    if ( ! is_front_page() ) {
+    	$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+    	$format = '?paged=%#%';
+    	$paged = max(1, get_query_var('paged') );
+    }
+    	
+
+    $paginate_links = paginate_links( 
+    	array(
+	        'base' => $base,
+	        'format' => $format,
+	        'current' => $paged,
+	        'total' => $query->max_num_pages,
+	        'mid_size' => 5,
+	        'prev_text' => '<<',
+	        'next_text' => '>>',
+	        'type' => 'list'
+    	) 
+    );
+
+    if ( $paginate_links ) {
+        echo '<div class="pagination">';
+        echo $paginate_links;
+        echo '</div><!--// end .pagination -->';
+    }
+}
+
+
+
+function swpe_show_single_product( $args ) {
+	global $post;
+	setup_postdata($post);
+	extract($args);
+
+	if ( !empty($container) )
+		echo '<' .  $container . ' class="'. $container_class.'">';
+
+		include(SWPE_DIR . 'front/views/single-product.php');
+
+	if ( !empty($container) )
+		echo '</' . $container . '>';
+	wp_reset_postdata();
+}
+
+
+

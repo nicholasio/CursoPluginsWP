@@ -19,7 +19,9 @@ get_header(); ?>
 					'before_item' 		=> '<div class="twenty_product">',
 					'after_item'  		=> '</div>',
 					'thumbnail_size'	=>  'twenty_swpe_image_size',
-					'more_text'			=> '+ Detalhes'
+					'more_text'			=> '+ Detalhes',
+					'before_title' => '<h3>',
+					'after_title'  => '</h3>'
 				),
 				array(
 					'posts_per_page' => 4

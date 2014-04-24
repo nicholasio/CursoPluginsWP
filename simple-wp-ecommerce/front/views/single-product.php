@@ -42,9 +42,6 @@
 	            <input name="itemAmount1" value="<?php echo swpe_get_price_with_discount('.'); ?>" type="hidden">  
 	            <input name="itemQuantity1" value="1" type="hidden">  
 	          
-	            <!-- Código de referência do pagamento no seu sistema (opcional) -->  
-	            <input name="reference" value="REF1234" type="hidden">  
-	              <input type="hidden" name="encoding" value="UTF-8">
 	      
 	            <!-- submit do form (obrigatório) -->  
 	            <input alt="Pague com PagSeguro" name="submit"  type="image"  
