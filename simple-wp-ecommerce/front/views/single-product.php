@@ -53,16 +53,19 @@
 	    </form>  
 	</div>
 </div>
+<?php $images = swpe_get_gallery_images(); ?>
+<?php if ( is_array($images) ) : ?>
 <div class="swpe_gallery">
 	<h3>Galeria de Imagens</h3>
 
-	<?php $images = swpe_get_gallery_images(); ?>
+	
 
-	<?php $class = apply_filters('swpe_gallery_images_class', ''); ?>
+	<?php $attr = apply_filters('swpe_gallery_images_attr', ''); ?>
 
-	<?php if ( is_array($images) ) : foreach ($images as $image) : ?>
-		<a href="<?php echo $image; ?>">
+	<?php foreach ($images as $image) : ?>
+		<a href="<?php echo $image; ?>" <?php echo $attr; ?>>
 			<img src="<?php echo $image; ?>" height="100px">
 		</a>
-	<?php endforeach; endif; ?>
+	<?php endforeach; ?>
 </div>
+<?php endif; ?>
