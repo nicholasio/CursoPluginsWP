@@ -1,18 +1,13 @@
-/* Theme Name:   MixStore
- Theme URI:    http://example.com/twenty-fourteen-child/
+/* 
+ Theme Name:   MixStore
  Description:  Curso Desenvolvendo Plugin Para WordPress
  Author:       Nícholas André
  Author URI:   http://www.nicholasandre.com.br
  Template:     mixfolio
  Version:      1.0.0
- Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
- Text Domain:  twenty-fourteen-child
 */
 
 @import url("../mixfolio/style.css");
-
-/* =Theme customization starts here
--------------------------------------------------------------- */
 
 .pagination {
 	float:left;

@@ -1,9 +1,5 @@
 <?php
-/**
- * The template for displaying Category Archive pages.
- *
- * @package Mixfolio
- */
+
 
 get_header(); ?>
 
@@ -14,7 +10,7 @@ get_header(); ?>
 
 				<header class="page-header">
 					<h1 class="page-title">
-						<?php printf( __( 'Category Archives: %s', 'mixfolio' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
+						<?php printf( __( 'Categoria %s', 'mixfolio' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
 					</h1><!-- .page-title -->
 
 					<?php
@@ -24,6 +20,7 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
+				
 				<?php 
 					if ( function_exists('swpe_show_products') ) {
 						swpe_show_products(
@@ -33,12 +30,13 @@ get_header(); ?>
 								'container_class'   => 'grid',
 								'before_item' 		=> '<li class="wrap four columns">',
 								'after_item'  		=> '</li>',
-								'thumbnail_size'	=>  '',
+								'thumbnail_size'	=>  'mixstore_product',
 								'more_text'			=>  '',	
 								'template'			=>  get_stylesheet_directory() . '/swpe_product.php'
 							),
 							array(
-								'posts_per_page' => 4
+								'posts_per_page' => 6,
+								'category_name'  => get_query_var('category_name')	
 							)
 						); 
 					}
@@ -49,12 +47,12 @@ get_header(); ?>
 				<article id="post-0" class="post no-results not-found">
 					<header class="entry-header">
 						<h1 class="entry-title">
-							<?php _e( 'Nothing Found', 'mixfolio' ); ?>
+							<?php _e( 'Nada foi encontrado', 'mixfolio' ); ?>
 						</h1><!-- .entry-title -->
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
-						<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'mixfolio' ); ?></p>
+						<p><?php _e( 'Aparentemente nada foi encontrado.', 'mixfolio' ); ?></p>
 						<?php get_search_form(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->

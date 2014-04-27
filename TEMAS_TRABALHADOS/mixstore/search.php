@@ -27,12 +27,12 @@ get_header(); ?>
 							'container_class'   => 'grid',
 							'before_item' 		=> '<li class="wrap four columns">',
 							'after_item'  		=> '</li>',
-							'thumbnail_size'	=>  '',
+							'thumbnail_size'	=>  'mixstore_product',
 							'more_text'			=>  '',	
 							'template'			=>  get_stylesheet_directory() . '/swpe_product.php'
 						),
 						array(
-							'posts_per_page' => 4,
+							'posts_per_page' => 6,
 							's' => get_query_var('s')
 						)
 					); 
