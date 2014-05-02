@@ -4,7 +4,7 @@
 
 <?php
 	if ( '' != get_the_post_thumbnail () ) {
-		the_post_thumbnail();
+		the_post_thumbnail( $thumbnail_size );
 	}
 ?>
 

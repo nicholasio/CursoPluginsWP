@@ -1,8 +1,9 @@
 <?php
+
 add_action('widgets_init', 'swpe_register_widgets');
 
 function swpe_register_widgets() {
-	register_widget('swpe_Featured_Product');
+	register_widget('swpe_Featured_Product'); 
 }
 
 class swpe_Featured_Product extends WP_Widget {
@@ -39,18 +40,15 @@ class swpe_Featured_Product extends WP_Widget {
 				   value="<?php echo esc_attr($more_text); ?>" >
 		</p>
 		<p>
-			Produto:
+			Produto: 
 			<select name="<?php echo $this->get_field_name('product'); ?>" class="widefat">
 				<?php 
-					$products = swpe_get_products(); 
+					$products = swpe_get_products( array('posts_per_page' => '-1') );
 					while( $products->have_posts() ) : 
 						$products->the_post();
 				?>
-					<option class="widefat" value="<?php echo get_the_ID(); ?>" <?php selected(get_the_ID(), $selected) ?> ><?php the_title(); ?></option>
-				<?php 
-					endwhile; 
-					wp_reset_postdata();
-				?>
+					<option class="widefat" value="<?php echo get_the_ID(); ?>" <?php selected(get_the_ID(), $selected) ?>><?php the_title();?></option>
+				<?php endwhile; wp_reset_postdata(); ?>
 			</select>
 		</p>
 		<?php
@@ -76,13 +74,13 @@ class swpe_Featured_Product extends WP_Widget {
 			echo $before_title . esc_html( $title ) . $after_title;
 
 		global $post;
-
 		$post = get_post( $instance['product'] );
 		setup_postdata($post);
 		$more_text = $instance['more_text'];
 		$thumbnail_size = '';
-		include(SWPE_DIR . 'front/views/product.php');
+		include( SWPE_DIR . 'front/views/product.php');
 		wp_reset_postdata();
+		
 
 		echo $after_widget;
 	}

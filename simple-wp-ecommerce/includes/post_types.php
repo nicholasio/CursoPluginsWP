@@ -1,10 +1,10 @@
 <?php
 
 function swpe_register_post_types() {
-	$menu_name = apply_filters( SWPE_PREFIX . 'menu_name', '[SWPE] Produtos' );
-	
-	register_post_type( 
-		SWPE_PREFIX . 'product',
+	$menu_name = apply_filters( SWPE_PREFIX . 'menu_name', '[SWPE] Produtos');
+
+	register_post_type(
+		SWPE_PREFIX . 'product', //swpe_product
 		array(
 			'labels' => array(
 				'name'               => 'Produtos',
@@ -21,19 +21,20 @@ function swpe_register_post_types() {
 				'parent_item_colon'  => '',
 				'menu_name'          => $menu_name
 			),
-			'public'      => true,
-			'supports'    => array('title', 'editor', 'thumbnail'),
+			'public' => true,
 			'has_archive' => true,
-			'menu_icon'   => 'dashicons-cart'
+			'menu_icon' => 'dashicons-cart',
+			'supports' => array('title', 'editor', 'thumbnail')
 		)
 	);
 
-	add_post_type_support( SWPE_PREFIX . 'product', 'thumbnail' );
+	add_post_type_support(SWPE_PREFIX . 'product', 'thumbnail');
 
-	$taxonomy = apply_filters('swpe_main_taxonomy', 'category');
+	$taxonomy = apply_filters(SWPE_PREFIX . 'main_taxonomy', 'category');
 
-	register_taxonomy_for_object_type( $taxonomy, SWPE_PREFIX . 'product' );
+	register_taxonomy_for_object_type( $taxonomy, SWPE_PREFIX . 'product');
 }
+
 add_filter( 'post_updated_messages', 'swpe_updated_messages' );
 
 function swpe_updated_messages( $messages ) {
@@ -57,8 +58,4 @@ function swpe_updated_messages( $messages ) {
 	return $messages;
 }
 
-/*
- * Definições de Meta Box para este Post Type
- */
 require_once( SWPE_DIR . 'admin/includes/meta_boxes.php');
-
