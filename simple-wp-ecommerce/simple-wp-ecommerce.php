@@ -15,7 +15,7 @@ define('SWPE_URL', plugins_url('', __FILE__) );
 
 register_activation_hook( __FILE__, 'swpe_install' );
 
-function spwe_install( ) {
+function swpe_install( ) {
 	global $wp_version;
 
 	if ( version_compare($wp_version, '3.8', '<') ) {
