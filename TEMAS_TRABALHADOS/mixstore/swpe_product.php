@@ -14,10 +14,10 @@
 
 		<?php 
 			if ( !is_search() )
-				the_excerpt();	
+				echo '<p>' . swpe_get_description() . '</p>';	
 		?>
 		<span class="postdate">
-			<?php echo get_the_date(); ?>
+			<?php the_category(','); ?>
 		</span><!-- .postdate -->
 		
 	</footer><!-- .entry-meta -->

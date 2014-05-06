@@ -80,3 +80,18 @@
 
 	width: 120px;
 }
+
+.grid p {
+	font-size: 11px;
+	margin: 15px;
+}
+.grid .entry-title {
+	margin: 15px;
+	font-size: 12px;
+}
+
+.postdate {
+	left: 15px;
+	bottom: 1px;	
+	font-size: 10px;
+}
